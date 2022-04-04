@@ -4,7 +4,7 @@ cwlVersion: v1.0
 class: Workflow
 
 inputs:
-  loadData:
+  loadDataR:
     type: File
     inputBinding:
       position: 1
@@ -36,7 +36,7 @@ inputs:
     type: string
     inputBinding:
       position: 8
-  filterData:
+  filterDataR:
     type: File
     inputBinding:
       position: 9
@@ -64,7 +64,7 @@ inputs:
     type: string
     inputBinding:
       position: 15
-  normalizeData:
+  normalizeDataR:
     type: File
     inputBinding:
       position: 16
@@ -110,7 +110,7 @@ steps:
   loadData:
     run: tools/1_loadData.cwl
     in:
-      script: loadData
+      script: loadDataR
       barcodes: barcodes
       features: features
       matrix: matrix
@@ -122,7 +122,7 @@ steps:
   filterData:
     run: tools/2_filter.cwl
     in:
-      script: filterData
+      script: filterDataR
       dataFile: loadData/loaded_data
       nFeatureRNAmin: nFeatureRNAmin
       nFeatureRNAmax: nFeatureRNAmax
@@ -134,7 +134,7 @@ steps:
   normalizeData:
     run: tools/3_normalization.cwl
     in:
-      script: normalizeData
+      script: normalizeDataR
       dataFile: filterData/filtered_data
       normalization_method: normalization_method
       scale_factor: scale_factor
