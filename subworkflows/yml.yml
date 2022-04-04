@@ -1,0 +1,38 @@
+#step1
+loadData:
+ class: File
+ path: tools/1_loadData.R
+barcodes:
+ class: File
+ path: barcodes.tsv.gz
+features:
+ class: File
+ path: features.tsv.gz
+matrix:
+ class: File
+ path: matrix.mtx.gz
+minCells: 0
+minFeatures: 0
+projectName: RA
+pattern: ^mt-
+
+#step2
+filterData:
+ class: File
+ path: tools/2_filter.R
+nFeatureRNAmin: "2000"
+nFeatureRNAmax: "5000"
+nCountRNAmin: -Inf
+nCountRNAmax: Inf
+percentMTmin: "0"
+percentMTmax: Inf
+
+#step3
+normalizeData:
+ class: File
+ path: tools/3_normalization.R
+normalization_method: "LogNormalize"
+scale_factor: "10000"
+margin: "1"
+block_size: "NULL"
+verbose: "TRUE"
