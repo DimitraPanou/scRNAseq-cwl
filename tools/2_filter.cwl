@@ -47,7 +47,7 @@ outputs:
     type: File
     outputBinding:
       glob: Filter.rds
-  plots:
+  filtered_data_plot:
     type: File
     outputBinding:
       glob: plot1.jpeg

@@ -27,6 +27,7 @@ inputs:
       position: 4
   minCells:
     type: int
+    default: 0
     inputBinding:
       position: 5
   minFeatures:
@@ -47,7 +48,7 @@ outputs:
     type: File
     outputBinding:
       glob: QC.rds
-  plot0:
+  data_plot:
     type: File
     outputBinding:
       glob: plot0.jpeg
