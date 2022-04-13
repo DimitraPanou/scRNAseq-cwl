@@ -1,0 +1,90 @@
+#step1
+running_step: 1
+loadDataR:
+ class: File
+ path: tools/1_loadData.R
+barcodes:
+ class: File
+ path: barcodes.tsv.gz
+features:
+ class: File
+ path: features.tsv.gz
+matrix:
+ class: File
+ path: matrix.mtx.gz
+minCells: 0
+minFeatures: 0
+projectName: RA
+pattern: ^mt-
+
+#step2
+filterDataR:
+ class: File
+ path: tools/2_filter.R
+nFeatureRNAmin: "2000"
+nFeatureRNAmax: "5000"
+nCountRNAmin: -Inf
+nCountRNAmax: Inf
+percentMTmin: "0"
+percentMTmax: Inf
+
+#step3
+normalizeDataR:
+ class: File
+ path: tools/3_normalization.R
+normalization_method: "LogNormalize"
+scale_factor: "10000"
+margin: "1"
+block_size: "NULL"
+verbose: "TRUE"
+
+#step4
+featureSelectionDataR:
+ class: File
+ path: tools/4_featureSelection.R
+selection_method: "mvp"
+loess_span: "0.3"
+clip_max: "auto"
+num_bin: "20"
+binning_method: "equal_width"
+num_features: "2000"
+
+#step5
+scaleDataR:
+ class: File
+ path: tools/5_Scaling.R
+
+#step6
+runPCAR:
+ class: File
+ path: tools/6_PCA.R
+
+#step7
+findNeighborsR:
+ class: File
+ path: tools/7_findNeighbors.R
+
+neighbors_method: "rann"
+k: "20"
+
+#step8
+clusterDataR:
+ class: File
+ path: tools/8_clusterData.R
+
+#step9
+runUmapR:
+ class: File
+ path: tools/9_runUMAP.R
+
+#step10
+runTSNER:
+ class: File
+ path: tools/10_runTSNE.R
+
+
+#step11
+find_markersR:
+ class: File
+ path: tools/11_findMarkers.R
+ 
