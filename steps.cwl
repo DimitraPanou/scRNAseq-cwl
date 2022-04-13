@@ -126,10 +126,6 @@ steps:
       barcodes: barcodes
       features: features
       matrix: matrix
-      minCells: minCells
-      minFeatures: minFeatures
-      projectName: projectName
-      pattern: pattern
     run: tools/1_loadData.cwl
     out: [loaded_data,data_plot]
   filterData:
@@ -137,35 +133,18 @@ steps:
     in:
       script: filterDataR
       dataFile: loadData/loaded_data
-      nFeatureRNAmin: nFeatureRNAmin
-      nFeatureRNAmax: nFeatureRNAmax
-      nCountRNAmin: nCountRNAmin
-      nCountRNAmax: nCountRNAmax
-      percentMTmin: percentMTmin
-      percentMTmax: percentMTmax
     out: [filtered_data,filtered_data_plot]
   normalizeData:
     run: tools/3_normalization.cwl
     in:
       script: normalizeDataR
       dataFile: filterData/filtered_data
-      normalization_method: normalization_method
-      scale_factor: scale_factor
-      margin: margin
-      block_size: block_size
-      verbose: verbose
     out: [normalized_data]
   findFeatures:
     run: tools/4_featureSelection.cwl
     in:
       script: featureSelectionDataR
       dataFile: normalizeData/normalized_data
-      selection_method: selection_method
-      loess_span: loess_span
-      clip_max: clip_max
-      num_bin: num_bin
-      binning_method: binning_method
-      nfeatures: num_features
     out: [find_features_data,features_data_plot]
   scaleData:
     run: tools/5_Scaling.cwl
@@ -184,8 +163,6 @@ steps:
     in:
       script: findNeighborsR
       dataFile: runPCA/pca_data
-      neighbors_method: neighbors_method
-      k: k
     out: [find_neighbors]
   clusterData:
     run: tools/8_clusterData.cwl
